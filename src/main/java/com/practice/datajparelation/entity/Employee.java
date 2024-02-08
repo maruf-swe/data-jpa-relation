@@ -25,10 +25,12 @@ public class Employee {
     private String email;
     private LocalDate birthDate;
 
-    
+
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
 }
