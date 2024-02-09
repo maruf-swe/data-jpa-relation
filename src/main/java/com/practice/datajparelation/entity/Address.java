@@ -23,6 +23,8 @@ public class Address {
 
     private  String houseNumber;
     private String zipCode;
+
+
     @OneToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
