@@ -1,10 +1,7 @@
 package com.practice.datajparelation.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -13,16 +10,21 @@ import lombok.*;
 @Getter
 @Setter
 public class Address {
-
     @Id
-    private Integer id;
-    private String streetName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    private  String houseNumber;
+    private String street;
+
+    private String city;
+
+    private String state;
+
+    private String country;
+
     private String zipCode;
 
-
-    @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
 }
